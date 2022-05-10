@@ -1,4 +1,4 @@
-//search for duplicate
+//search for closed parentheses
 #include <iostream>
 #include <vector>
 #include <unordered_map>
@@ -7,9 +7,11 @@ using namespace std;
 
 int main()
 {
-	vector<char> list = {'{', '{', '(', '}', '}', '}', '[', ']', '{', ')'};
+    string s = "({{{{}}}))";
+      
+    int length = s.size();
 
-	int length = list.size();
+    cout < length;
 
     if (length % 2 != 0)
     {
@@ -17,30 +19,37 @@ int main()
 
     }
 
+    //create a 2d array
+    char list[length][length];
 
-	//perform sort
-	sort(list.begin(), list.end());
+    //fill in the 2d array
+    for (int x = 0; x < length; x++)
+    {
+        list[s[x]]['-'];
+    }
 
-
- 	//print out sort
-    cout << "Sorted \n";
-    for (auto x : list)
-        cout << x << " ";
+    //print out the 2d array
+    for (int x = 0; x < length; x++)
+    {
+        cout << list[x][x];
+    }
+    
+    /*
 
     cout << "\n";
 
-    int count = 0;
+    int pairCount = 0;
 
     char charIndex;
     char charNeeded;
-
+    int relCount;
 
     //search for duplicate
     for (int i = 0; i < length; i++)
     {
-        charIndex = list[i];
+        charIndex = s[i];
 
-        cout << "charIndex = " << charIndex << "\n";
+        
 
         if (charIndex == '(')
         {
@@ -57,34 +66,41 @@ int main()
             charNeeded = '}';
         }
 
-        cout << "charNeeded = " << charNeeded << "\n";
+        cout << "charIndex" << i << " = " << charIndex << "\n";
 
+        relCount = 1;
         
-        for (int j = i + 1; j < length; j++)
+        for (int j = i+1; j < length; j++)
         {
-            if (list[j] == charNeeded)
+            
+            cout << "charFound" << j << " = " << s[j] << "\n";
+            cout << "pairCount " << pairCount << "\n";
+
+            if (charNeeded == s[j] && relCount % 2 == 0)
             {
-                cout << "Pair found " << charIndex << charNeeded << "\n";
-                count = count + 2;
+                cout << "Pair exist " << charIndex << charNeeded << " " << i << ", " << j << "\n\n";
+                pairCount = pairCount + 2;
                 charNeeded = '?';
                 break;
             }
+            relCount++;
         }
-    
 
     }
 
-    if (count == length)
+    if (pairCount == length)
     {
-        cout << "Valid parentheses \n";
+        cout << "Valid parentheses \n" << pairCount;
         return true;
     }
     else 
     {   
-        cout << "Not valid parentheses \n";
+        cout << "Not valid parentheses \n" << pairCount;
         return false;
     }
+    
+    */
 
-
-	return 0;
+    return 0;
+        
 }
