@@ -10,8 +10,9 @@ int main()
     string s = "({{{{}}}))";
       
     int length = s.size();
+    char list[2][length];
+    
 
-    cout < length;
 
     if (length % 2 != 0)
     {
@@ -20,24 +21,13 @@ int main()
     }
 
     //create a 2d array
-    char list[length][length];
-
-    //fill in the 2d array
-    for (int x = 0; x < length; x++)
+    for (int i = 0; i < length; i++)
     {
-        list[s[x]]['-'];
+        list[0][i] = s[i];
+        list[1][i] = '-';
     }
 
-    //print out the 2d array
-    for (int x = 0; x < length; x++)
-    {
-        cout << list[x][x];
-    }
     
-    /*
-
-    cout << "\n";
-
     int pairCount = 0;
 
     char charIndex;
@@ -79,12 +69,21 @@ int main()
             if (charNeeded == s[j] && relCount % 2 == 0)
             {
                 cout << "Pair exist " << charIndex << charNeeded << " " << i << ", " << j << "\n\n";
+                list[1][i] = 'x';
+                list[1][j] = 'x';
                 pairCount = pairCount + 2;
                 charNeeded = '?';
                 break;
             }
             relCount++;
         }
+
+    }
+
+    //print out the 2d array
+    for (int i = 0; i < length; i++)
+    {
+       cout << list[0][i] << ", " << list[1][i] << "\n";
 
     }
 
@@ -99,7 +98,7 @@ int main()
         return false;
     }
     
-    */
+    
 
     return 0;
         
